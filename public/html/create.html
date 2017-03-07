@@ -1,0 +1,21 @@
+  <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+    <div>
+      <md-input-container>
+        <label>Name</label>
+        <input ng-model="postObj.name">
+      </md-input-container>
+
+      <md-input-container>
+        <label>Description</label>
+        <input ng-model="postObj.description" type="text">
+      </md-input-container>
+    </div>
+    <md-input-container>
+        <label>Amount</label>
+        <input ng-model="postObj.amount" type="number">
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-click="createRecord()">Add</md-button>
+    </div>
+    <div>{{successMessage}}</div>
+<div>{{error}}</div>
+  </md-content>

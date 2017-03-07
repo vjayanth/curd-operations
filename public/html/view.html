@@ -1,0 +1,18 @@
+<table class="table" ng-init="getList()">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="record in records">
+      <th scope="row">{{record._id}}</th>
+      <td>{{record.name}}</td>
+      <td>{{record.description}}</td>
+      <td>{{record.amount}}</td>
+    </tr>
+  </tbody>
+</table>
