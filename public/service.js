@@ -37,7 +37,7 @@ App.factory('AppService',function($http){
 
 			}
 			function updateRecord(postObj){
-				return $http.post('/deleteRecord',postObj)
+				return $http.post('/updateRecord',postObj)
 				.then(function(response){
 					return response.data;
 				},function(error){
