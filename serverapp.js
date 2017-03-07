@@ -43,10 +43,19 @@ app.get('/getList',function(req,res){
 	})
 });
 app.post('/deleteRecord',function(req,res){
+	Project.findByIdAndRemove(req.body._id, function (err, todo) {  
+    // We'll create a simple object to send back with a message and the id of the document that was removed
+    // You can really do this however you want, though.
+    var response = {
+        message: "Record successfully deleted",
+        id: todo._id
+    };
+    res.send(response);
+});
 
 });
 app.post('/updateRecord',function(req,res){
-	Project.findById(req.params.todoId, function (err, todo) {  
+	Project.findById(req.body._id, function (err, todo) {  
     // Handle any possible database errors
     if (err) {
         res.status(500).send(err);

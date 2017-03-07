@@ -1,3 +1,4 @@
+<h1>{{successMessage}}</h1>
 <table class="table" ng-init="getList()">
   <thead>
     <tr>
@@ -5,6 +6,8 @@
       <th>Name</th>
       <th>Description</th>
       <th>Amount</th>
+      <th>Delete</th>
+      <th>Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +16,8 @@
       <td>{{record.name}}</td>
       <td>{{record.description}}</td>
       <td>{{record.amount}}</td>
+      <td><span class="glyphicon glyphicon-trash" ng-click="deleteRecord(record)"></span></td>
+      <td> <span class="glyphicon glyphicon-edit" ng-click="editRecord(record)"></span></td>
     </tr>
   </tbody>
 </table>

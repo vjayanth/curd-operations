@@ -1,7 +1,7 @@
 var App =angular.module('MiniProj',['ngMaterial','ui.router']);
 
 
-App.controller('MiniController',function($scope,$state,AppService){
+App.controller('MiniController',function($scope,$state,AppService,$stateParams){
 	$scope.postObj={name:'',description:'',amount:''};	
 	$scope.createRecord=function(){
 		AppService.createRecord($scope.postObj)
@@ -13,11 +13,25 @@ App.controller('MiniController',function($scope,$state,AppService){
 		})
 
 	}
+	console.log($stateParams);
 	$scope.getList=function(){
 		AppService.getRecords()
 		.then(function(response){
 			$scope.records=response;
 		})
+	}
+	$scope.deleteRecord=function(record){
+		AppService.deleteRecord(record)
+		.then(function(response){
+			$scope.successMessage=response.message;
+				
+		},function(error){
+			$scope.error=error;
+		})
+	}
+	$scope.editRecord=function(record){
+		var param={'id':record._id}
+		$state.go('update',param);
 	}
 });
 
@@ -34,6 +48,11 @@ $stateProvider
 .state('view',{
 	path:'/view',
 	templateUrl:'public/html/view.html',
+	controller:'MiniController'
+})
+.state('update',{
+	path:'/update/:id',
+	templateUrl:'public/html/update.html',
 	controller:'MiniController'
 })
 .state("otherwise", { url : '/'});

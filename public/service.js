@@ -3,7 +3,8 @@ App.factory('AppService',function($http){
 	return ({
 
 			createRecord:createRecord,
-			getRecords:getRecords
+			getRecords:getRecords,
+			deleteRecord:deleteRecord
 			})
 			function createRecord(postObj){
 				return $http.post('/create',postObj)
@@ -17,6 +18,26 @@ App.factory('AppService',function($http){
 			}
 			function getRecords(){
 				return $http.get('/getList')
+				.then(function(response){
+					return response.data;
+				},function(error){
+					return response.error;
+				})
+
+
+			}
+			function deleteRecord(postObj){
+				return $http.post('/deleteRecord',postObj)
+				.then(function(response){
+					return response.data;
+				},function(error){
+					return response.error;
+				})
+
+
+			}
+			function updateRecord(postObj){
+				return $http.post('/deleteRecord',postObj)
 				.then(function(response){
 					return response.data;
 				},function(error){
